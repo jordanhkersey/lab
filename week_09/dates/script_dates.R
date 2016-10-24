@@ -1,5 +1,6 @@
 ###Dates, dplyr, tidyr
 library(tidyverse)
+library(lubridate) #shouldn't need
 
 data_dictionary<-data.frame(variable = c("date", "rain", "soil_water", "soil_temp", "soy_yield", "maize_yield", "nh4",
                               "no3", "n_fixation", "n_leaching", "soil_n_min", "n_uptake"), 
@@ -15,10 +16,19 @@ data_dictionary<-data.frame(variable = c("date", "rain", "soil_water", "soil_tem
                                             "kg of nitrogen taken up by the plant" ))
 future<-read_csv("future.csv", na = "?")  
 
-#Use `qplot(x, y, data=future)` to explore a few simple relationships
+#Use `qplot(x, y, data=future)` to explore a few simple relationshipsq
+
+qplot(soil_temp, soil_water, data=future)
+
+
 #Try `qplot(date, y, data=future) (may take a minute to print)
 
+qplot(date, soy_yield, data=future)
+filt
+
 #Change the dates to the proper format and plot again
+future$date <- dmy(future$date)
+
 #Add a year column  
 #Add a month column  
 #Add day of year  
